@@ -338,3 +338,8 @@ body {
     cursor: pointer;
     width: 30%;
 }
+
+#login-button a {
+    color: white;
+    text-decoration: none;
+}
