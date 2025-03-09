@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Restaurant Menu</title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css" href="menu.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Chocolate+Classical+Sans&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="nav-left">
+                <img src="logo.png" alt="logo" class="logo">
+            </div>
+            <div class="nav-right">
+                <button id="login-button"><a href="./signup.html">Login</a></button>
+                <ul class="nav-menu">
+                    <li>Home</li>
+                    <li>Our Menu</li>
+                    <li>Our Offers</li>
+                    <li>Know us more</li>
+                    <li>Your order</li>
+                    <li>Cart (<span id="cartSize">0</span>)</li>
+                </ul>
+            </div>
+        </nav>
+        <div class="menu-banner">
+            <h1>OUR MENU</h1>
+        </div>
+        <div class="menu-search">
+            <input type="text" placeholder="What do you want to search?" class="search-input">
+            <div class="menu-search-categories">
+                <button class="active">All</button>
+                <button>Beverages</button>
+                <button>Main Course</button>
+                <button>Combos</button>
+            </div>
+        </div>
+        <section class="menu-sections">
+            <h1> Best Seller </h1>
+            <div class="menu-section-items">
+                <div class="menu-items">
+                </div>
+            </div>
+        </section>
+        <div class="footer">
+            <div class="footer-top">
+                <div class="footer-section1">
+                    <img src="logo.png" alt="logo" class="logo">
+                </div>
+                <div class="footer-section2">
+                    <h1>Quick Links</h1>
+                    <span>Our Menu</span>
+                    <span>Our Offers</span>
+                    <span>Know What We Have Achieved</span>
+                </div>
+                <div class="footer-section3">
+                    <h1>Wanna Get Updated with Our Exciting Offers?</h1>
+                    <span>Follow us on:</span>
+                    <span>Instagram | Facebook | Twitter</span>
+                    <form>
+                        <input type="text" placeholder="Subscribe for daily exciting offers" class="email-input">
+                        <button>Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                Terms & Conditions | Privacy Policy | All Rights Reserved
+            </div>
+        </div>
+        <script src="menulist.js"></script>
+        <script src="menu.js"></script>
+    </body>
+</html>
