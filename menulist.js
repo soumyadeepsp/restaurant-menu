@@ -41,3 +41,17 @@ const menuItemsData = [{
     "description": "Rice cooked with vegetables and spices",
     "price": 200
 }]
+
+const productTokens = [];
+const tokenizeProducts = () => {
+    for (let i=0; i<menuItemsData.length; i++) {
+      const title = menuItemsData[i].title.replace(/[^a-zA-Z0-9 ]/, '');
+      const description = menuItemsData[i].description.replace(/[^a-zA-Z0-9 ]/, '');
+      const tokens = title.split(' ').concat(description.split(' '));
+      productTokens.push({
+        id: menuItemsData[i].id,
+        tokens: tokens
+      });
+    }
+};
+tokenizeProducts();

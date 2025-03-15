@@ -21,13 +21,13 @@ for (let i=0; i<menuItems.length; i++) {
 
 const menuItemsContainer = document.querySelector('.menu-items');
 for (let i=0; i<menuItemsData.length; i++) {
-  menuItemsContainer.innerHTML = menuItemsContainer.innerHTML + `<div class="menu-item">
+  menuItemsContainer.innerHTML = menuItemsContainer.innerHTML + `<div id=${'product-'+menuItemsData[i].id} class="menu-item">
       <img src=${menuItemsData[i].image} alt="menu1" class="menu-item-image">
       <div class="menu-item-details">
         <h1>${menuItemsData[i].title}</h1>
         <span>${menuItemsData[i].description}</span>
         <span class="price">Price: Rs. ${menuItemsData[i].price}</span>
-        <button id=${menuItemsData[i].id} class="add-to-cart hidden">Add to Cart</button>
+        <button id=${'button-'+menuItemsData[i].id} class="add-to-cart hidden">Add to Cart</button>
       </div>
     </div>`;
   // let menuItem = document.createElement('div');
@@ -59,6 +59,13 @@ for (let i=0; i<menuItemsData.length; i++) {
   // details.appendChild(button);
 }
 
+for (let i=0; i<menuItemsData.length; i++) {
+  const menuItem = document.getElementById('product-'+menuItemsData[i].id);
+  menuItem.addEventListener('click', function() {
+    window.open(`./product.html?id=${menuItemsData[i].id}`, '_blank');
+  });
+}
+
 localStorage.setItem('cart', JSON.stringify([]));
 console.log(localStorage.getItem('cart'));
 
@@ -76,4 +83,15 @@ for (let i=0; i<addtoCartButtons.length; i++) {
       }
     });
   });
+}
+
+const searchInput = document.querySelector('.menu-search input');
+searchInput.addEventListener('input', function(e) {
+  searchFood(e.target.value);
+});
+
+console.log(productTokens);
+
+const searchFood = (searchQuery) => {
+
 }

@@ -4,6 +4,7 @@
         <title>Restaurant Menu</title>
         <link rel="stylesheet" type="text/css" href="index.css">
         <link rel="stylesheet" type="text/css" href="menu.css">
+        <link rel="stylesheet" type="text/css" href="product.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Chocolate+Classical+Sans&display=swap" rel="stylesheet">
@@ -25,25 +26,30 @@
                 </ul>
             </div>
         </nav>
-        <div class="menu-banner">
-            <h1>OUR MENU</h1>
-        </div>
-        <div class="menu-search">
-            <input type="text" placeholder="What do you want to search?" id="search-input">
-            <div class="menu-search-categories">
-                <button class="active">All</button>
-                <button>Beverages</button>
-                <button>Main Course</button>
-                <button>Combos</button>
-            </div>
-        </div>
-        <section class="menu-sections">
-            <h1> Best Seller </h1>
-            <div class="menu-section-items">
-                <div class="menu-items">
+        <div class="product-details-container">
+            <div class="product-details-card">
+                <div id="product-image">
+                    <!-- <img src="best-seller-1.jpg" alt="product1" class="product-image"> -->
                 </div>
+                <div class="product-details">
+                    <h1 id="product-name"></h1>
+                    <span class="rating star-color">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        (4.0/5)
+                    </span>
+                    <p id="product-description"></p>
+                    <p id="product-price"></p>
+                    <div class="product-buttons">
+                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="buy-now">Order It</button>
+                    </div>
+                </div>   
             </div>
-        </section>
+        </div>
         <div class="footer">
             <div class="footer-top">
                 <div class="footer-section1">
@@ -69,7 +75,8 @@
                 Terms & Conditions | Privacy Policy | All Rights Reserved
             </div>
         </div>
+        <script src="https://kit.fontawesome.com/ea50694bb0.js" crossorigin="anonymous"></script>
         <script src="menulist.js"></script>
-        <script src="menu.js"></script>
+        <script src="product.js"></script>
     </body>
 </html>

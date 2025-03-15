@@ -258,7 +258,7 @@ body {
 }
 
 .footer {
-    height: 375px;
+    height: auto;
     padding: 40px;
     width: 100%;
     background-color: #333333;
