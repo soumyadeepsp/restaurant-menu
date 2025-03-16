@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Restaurant Menu</title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css" href="menu.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Chocolate+Classical+Sans&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="nav-left">
+                <img src="logo.png" alt="logo" class="logo">
+            </div>
+            <div class="nav-right">
+                <button id="login-button"><a href="./signup.html">Login</a></button>
+                <ul class="nav-menu">
+                    <li>Home</li>
+                    <li>Our Menu</li>
+                    <li>Our Offers</li>
+                    <li>Know us more</li>
+                    <li>Your order</li>
+                    <li>Cart (<span id="cartSize">0</span>)</li>
+                </ul>
+            </div>
+        </nav>
+        <div class="menu-banner">
+            <h1>YOUR CART</h1>
+        </div>
+        <section class="menu-sections">
+            <h1> Your Cart Items </h1>
+            <div class="menu-section-items">
+                <div class="menu-items cart-items">
+                </div>
+            </div>
+        </section>
+        <script src="cart.js"></script>
+    </body>
+</html>

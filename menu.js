@@ -1,4 +1,5 @@
-console.log(menuItemsData);
+const searchItemsContainer = document.querySelector('.search-sections');
+searchItemsContainer.innerHTML = '';
 
 const menuButtons = document.querySelectorAll('.menu-search-categories button');
 
@@ -12,10 +13,8 @@ for (let i=0; i<menuButtons.length; i++) {
 }
 
 const menuItems = document.querySelectorAll('.menu-item');
-console.log(menuItems);
 for (let i=0; i<menuItems.length; i++) {
   menuItems[i].addEventListener('onmouseover', function() {
-    console.log(menuItems[i]);
   });
 }
 
@@ -66,20 +65,32 @@ for (let i=0; i<menuItemsData.length; i++) {
   });
 }
 
+for (let i=0; i<menuItemsData.length; i++) {
+  const button = document.getElementById('button-'+menuItemsData[i].id);
+  button.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (localStorage.getItem('cart') == null) {
+      localStorage.setItem('cart', JSON.stringify([menuItemsData[i]]));
+    } else {
+      let cart = JSON.parse(localStorage.getItem('cart'));
+      cart.push(menuItemsData[i]);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      console.log(JSON.parse(localStorage.getItem('cart')));
+    }
+    alert ('Item added to cart successfully');
+  });
+}
+
 localStorage.setItem('cart', JSON.stringify([]));
-console.log(localStorage.getItem('cart'));
 
 const addtoCartButtons = document.querySelectorAll('.add-to-cart');
 for (let i=0; i<addtoCartButtons.length; i++) {
   addtoCartButtons[i].addEventListener('click', function() {
-    console.log(addtoCartButtons[i].id);
     menuItemsData.forEach(menuItem => {
       if (menuItem.id == addtoCartButtons[i].id) {
-        console.log(menuItem);
         let cart = JSON.parse(localStorage.getItem('cart'));
         cart.push(menuItem);
         localStorage.setItem('cart', JSON.stringify(cart));
-        console.log(localStorage.getItem('cart'));
       }
     });
   });
@@ -87,11 +98,65 @@ for (let i=0; i<addtoCartButtons.length; i++) {
 
 const searchInput = document.querySelector('.menu-search input');
 searchInput.addEventListener('input', function(e) {
-  searchFood(e.target.value);
+  if (e.target.value == '') {
+    const searchItemsContainer = document.querySelector('.search-sections');
+    searchItemsContainer.innerHTML = '';
+    return;
+  } else {
+    const searchItemsContainer = document.querySelector('.search-sections');
+    searchItemsContainer.innerHTML = '';
+    searchItemsContainer.innerHTML = searchItemsContainer.innerHTML + `<h1> Search Results </h1>
+      <div class="search-section-items">
+          <div class="search-items">
+          </div>
+      </div>`;
+  }
+  const products = searchFood(e.target.value);
+  const searchItemsContainer = document.querySelector('.search-items');
+  searchItemsContainer.innerHTML = '';
+  if (products.length == 0) {
+    searchItemsContainer.innerHTML = '<h1>No items found</h1>';
+  }
+  for (let i=0; i<products.length; i++) {
+    searchItemsContainer.innerHTML = searchItemsContainer.innerHTML + `<div id=${'product-'+products[i].id} class="search-item">
+        <img src=${products[i].image} alt="menu1" class="search-item-image">
+        <div class="search-item-details">
+          <h1>${products[i].title}</h1>
+          <span>${products[i].description}</span>
+          <span class="price">Price: Rs. ${products[i].price}</span>
+          <button id=${'button-'+products[i].id} class="add-to-cart hidden">Add to Cart</button>
+        </div>
+      </div>`;
+  }
 });
 
-console.log(productTokens);
-
 const searchFood = (searchQuery) => {
-
+  const searchTokens = searchQuery.toLowerCase().split(' ');
+  let productMatchingScores = [];
+  for (let i=0; i<productTokens.length; i++) {
+    let count = 0;
+    for (let j=0; j<productTokens[i].tokens.length; j++) {
+      if (searchTokens.includes(productTokens[i].tokens[j])) {
+        count++;
+      }
+    }
+    productMatchingScores.push({
+      id: productTokens[i].id,
+      score: count
+    });
+  }
+  productMatchingScores = productMatchingScores.filter(product => product.score > 0);
+  productMatchingScores.sort((a, b) => {
+    return b.score - a.score;
+  });
+  productMatchingScores = productMatchingScores.splice(0, 5);
+  const products = [];
+  for (let i=0; i<productMatchingScores.length; i++) {
+    menuItemsData.forEach(menuItem => {
+      if (menuItem.id == productMatchingScores[i].id) {
+        products.push(menuItem);
+      }
+    });
+  }
+  return products;
 }
