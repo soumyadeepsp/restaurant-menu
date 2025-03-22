@@ -4,6 +4,7 @@
         <title>Restaurant Menu</title>
         <link rel="stylesheet" type="text/css" href="index.css">
         <link rel="stylesheet" type="text/css" href="menu.css">
+        <link rel="stylesheet" type="text/css" href="order.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Chocolate+Classical+Sans&display=swap" rel="stylesheet">
@@ -25,19 +26,22 @@
                 </ul>
             </div>
         </nav>
-        <div class="menu-banner">
-            <h1>YOUR CART</h1>
-        </div>
-        <section class="menu-sections">
-            <h1> Your Cart Items </h1>
-            <div class="menu-section-items">
-                <div class="menu-items cart-items">
-                </div>
-            </div>
+        <h1>YOUR ORDERS</h1>
+        <section class="order-sections">
+            <table class="order-table">
+                <thead class="order-table-head">
+                    <tr>
+                        <th class="order-table-head-cell">Order No.</th>
+                        <th class="order-table-head-cell">Order details</th>
+                    
+                        <th class="order-table-head-cell">Total Price</th>
+                        <th class="order-table-head-cell">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="order-table-body">
+                </tbody>
+            </table>
         </section>
-        <div id="order-button-container">
-            <button id="order-button">Place Order</button>
-        </div>
-        <script src="cart.js"></script>
+        <script src="order.js"></script>
     </body>
 </html>
